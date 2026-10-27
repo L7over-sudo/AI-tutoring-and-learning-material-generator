@@ -1,0 +1,28 @@
+{
+  "name": "ai-teaching-image-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/app.js",
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "form-data": "^4.0.1",
+    "https-proxy-agent": "^7.0.6",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.8.0",
+    "multer": "^2.0.2",
+    "nanoid": "^5.0.9",
+    "p-limit": "^6.2.0",
+    "pdf-parse": "^1.1.1",
+    "sharp": "^0.33.5",
+    "socks-proxy-agent": "^8.0.5",
+    "winston": "^3.17.0"
+  }
+}

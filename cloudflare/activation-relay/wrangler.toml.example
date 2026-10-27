@@ -1,0 +1,12 @@
+name = "ai-teaching-activation-relay"
+main = "worker.mjs"
+compatibility_date = "2026-09-04"
+
+[vars]
+FEISHU_APP_TOKEN = "UNdNbFUwXajxchseRZDckYFXn9b"
+FEISHU_TABLE_ID = "tbl2yibAqbfvFTeV"
+
+# 使用 wrangler secret put 分别保存：
+# FEISHU_APP_ID
+# FEISHU_APP_SECRET
+# REPORT_TOKEN

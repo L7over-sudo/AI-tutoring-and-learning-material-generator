@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+server/node_modules/
+web/node_modules/
+
+# Generated frontend and desktop packages
+web/dist/
+release/
+.electron-builder-cache/
+
+# Runtime data and user uploads
+data/
+uploads/
+server/uploads/
+server/src/uploads/
+
+# Logs
+logs/
+*.log
+
+# Local test and diagnostic artifacts
+.tmp-*
+_diag_*
+_thumb_*
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# Seller-only license signing key (never package or commit)
+.license-private/
+electron/activation-report-config.json
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f8fbfa" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>手机发卡</title>
+  <style>
+    :root{font-family:"Microsoft YaHei",system-ui,sans-serif;color:#172f2a;background:#eef6f3}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% -8%,#ffe8ed,transparent 34%),linear-gradient(160deg,#fbfdfc,#e9f4f0);-webkit-tap-highlight-color:transparent}button,input,select,textarea{font:inherit}button{touch-action:manipulation}.app{width:min(100%,620px);min-height:100vh;margin:auto;padding:18px 14px calc(92px + env(safe-area-inset-bottom))}.top{display:flex;align-items:center;justify-content:space-between;padding:4px 3px 16px}.brand{display:flex;align-items:center;gap:11px}.logo{display:grid;width:43px;height:43px;place-items:center;border-radius:14px;color:#fff;background:linear-gradient(145deg,#ff6e83,#e83f5e);box-shadow:0 10px 24px rgba(232,63,94,.23);font-size:22px}.brand h1{margin:0;font-size:21px}.brand p{margin:3px 0 0;color:#778781;font-size:12px}.secure{padding:7px 9px;border-radius:999px;color:#267b5d;background:#e0f3eb;font-size:11px;font-weight:700}.view{display:none}.view.active{display:block}.panel{margin-bottom:14px;padding:18px;border:1px solid #dbe9e4;border-radius:20px;background:rgba(255,255,255,.96);box-shadow:0 12px 34px rgba(48,86,74,.08)}.panel h2{margin:0 0 5px;font-size:18px}.muted{margin:0;color:#7b8984;font-size:12px;line-height:1.65}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}.plan{min-height:74px;padding:10px 6px;border:1px solid #d6e4df;border-radius:15px;color:#4a5d56;background:#f7faf9}.plan strong,.plan span{display:block}.plan strong{font-size:15px}.plan span{margin-top:5px;color:#87938f;font-size:11px}.plan.active{color:#fff;border-color:#319b72;background:linear-gradient(145deg,#58bd93,#2c966e);box-shadow:0 9px 20px rgba(44,150,110,.2)}.plan.active span{color:#e9fff6}.primary,.secondary,.danger{border:0;border-radius:14px;padding:13px 16px;font-weight:800}.primary{width:100%;color:#fff;background:linear-gradient(135deg,#ff7186,#ea3e5d);box-shadow:0 9px 22px rgba(234,62,93,.18)}.primary:disabled{opacity:.62}.secondary{color:#287b5e;background:#e6f4ef}.danger{color:#b53b50;background:#fdebf0}.status{min-height:20px;margin-top:10px;color:#c74057;font-size:12px;line-height:1.55}.status.ok{color:#247d5b}.result{display:none}.result.show{display:block}.code{width:100%;min-height:112px;margin:13px 0 10px;padding:13px;border:1px dashed #b9d5cb;border-radius:14px;background:#f6fbf9;color:#26453b;font:12px/1.55 ui-monospace,Consolas,monospace;resize:none}.meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}.meta span{padding:6px 9px;border-radius:999px;background:#eef6f3;color:#64756f;font-size:11px}.row{display:flex;gap:9px}.row>*{flex:1}.toolbar{display:grid;grid-template-columns:1fr 122px;gap:9px;margin:13px 0}.field{width:100%;border:1px solid #ccddd7;border-radius:13px;padding:12px 13px;outline:none;background:#fff}.field:focus{border-color:#3da67e;box-shadow:0 0 0 3px rgba(61,166,126,.12)}.history{display:grid;gap:10px}.history-card{padding:14px;border:1px solid #e0ebe7;border-radius:16px;background:#fbfdfc}.history-head,.history-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}.history-head strong{font-size:15px}.badge{padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}.badge.activation{color:#8a6416;background:#fff4d7}.badge.active{color:#247a59;background:#e3f4ec}.badge.expired{color:#b04457;background:#fdebef}.history-meta{display:grid;grid-template-columns:74px 1fr;gap:6px;margin:12px 0;color:#667770;font-size:12px}.history-meta b{color:#88958f;font-weight:500}.history-actions button{padding:9px 12px;border-radius:11px}.empty{padding:30px 10px;color:#8b9893;text-align:center;font-size:13px}details{border:1px solid #dce9e4;border-radius:17px;background:#fff}summary{padding:16px;cursor:pointer;font-weight:800}details .content{padding:0 16px 16px}label{display:block;margin:13px 0 7px;font-size:13px;font-weight:700}.warning{padding:12px;border-radius:13px;color:#8a651e;background:#fff6de;font-size:12px;line-height:1.6}.bottom-nav{position:fixed;z-index:10;right:0;bottom:0;left:0;padding:8px max(12px,calc((100vw - 620px)/2 + 12px)) calc(8px + env(safe-area-inset-bottom));border-top:1px solid rgba(206,224,217,.9);background:rgba(255,255,255,.94);backdrop-filter:blur(16px)}.nav-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.nav{border:0;border-radius:13px;padding:10px 6px;color:#71817b;background:transparent;font-size:12px;font-weight:700}.nav span{display:block;margin-bottom:3px;font-size:19px}.nav.active{color:#237b5b;background:#e7f4ef}.toast{position:fixed;z-index:20;top:18px;left:50%;max-width:calc(100% - 36px);padding:11px 16px;border-radius:999px;color:#fff;background:#253d36;box-shadow:0 10px 30px rgba(22,44,37,.24);font-size:13px;opacity:0;transform:translate(-50%,-12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:370px){.plans{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}.secure{display:none}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="top"><div class="brand"><div class="logo">🔐</div><div><h1>手机发卡</h1><p>选卡型 · 一键生成 · 自动复制</p></div></div><span class="secure">私密管理页</span></header>
+
+    <main id="issueView" class="view active">
+      <section class="panel">
+        <h2>选择卡型</h2><p class="muted">限时卡从客户首次输入激活码时开始计时。</p>
+        <div id="plans" class="plans">
+          <button class="plan" data-plan="day"><strong>一天卡</strong><span>1 天</span></button>
+          <button class="plan active" data-plan="week"><strong>7天卡</strong><span>7 天</span></button>
+          <button class="plan" data-plan="fortnight"><strong>14天卡</strong><span>14 天</span></button>
+          <button class="plan" data-plan="month"><strong>月卡</strong><span>30 天</span></button>
+          <button class="plan" data-plan="year"><strong>年卡</strong><span>365 天</span></button>
+          <button class="plan" data-plan="lifetime"><strong>永久卡</strong><span>永久有效</span></button>
+        </div>
+        <button id="generate" class="primary">一键生成并复制</button>
+        <div id="status" class="status"></div>
+      </section>
+      <section id="result" class="panel result">
+        <h2>激活码已生成</h2>
+        <textarea id="code" class="code" readonly></textarea>
+        <div id="meta" class="meta"></div>
+        <div class="row"><button id="copy" class="secondary">复制激活码</button><button id="goHistory" class="secondary">查看记录</button></div>
+      </section>
+      <section class="warning">管理链接等同后台钥匙，只保存在自己的手机里，不要转发给客户或公开发布。</section>
+    </main>
+
+    <main id="historyView" class="view">
+      <section class="panel">
+        <h2>发卡记录</h2><p class="muted">查看状态、复制激活码或删除本地记录。</p>
+        <div class="toolbar"><input id="historySearch" class="field" type="search" autocomplete="off" placeholder="搜索卡型或记录编号" /><select id="statusFilter" class="field"><option value="all">全部状态</option><option value="activation">激活后计时</option><option value="active">有效</option><option value="expired">已过期</option></select></div>
+        <div id="history" class="history"></div>
+        <button id="refresh" class="secondary" style="width:100%;margin-top:12px">刷新记录</button>
+      </section>
+    </main>
+
+    <main id="settingsView" class="view">
+      <section class="panel"><h2>使用说明</h2><p class="muted">手机和运行发卡后台的电脑必须连接同一 Wi-Fi。关闭电脑上的发卡后台窗口后，手机页面也会停止工作。</p></section>
+      <details open><summary>飞书激活记录</summary><div class="content"><p class="muted">客户首次激活后自动写入飞书多维表格。</p><label for="feishuWebhook">激活记录中转地址</label><input id="feishuWebhook" class="field" type="password" autocomplete="off" placeholder="https://..." /><label for="feishuReportToken">上报令牌</label><input id="feishuReportToken" class="field" type="password" autocomplete="off" placeholder="中转服务令牌" /><div class="row" style="margin-top:13px"><button id="testFeishu" class="secondary">测试连接</button><button id="saveFeishu" class="primary">保存配置</button></div><div id="feishuStatus" class="status"></div></div></details>
+    </main>
+  </div>
+
+  <nav class="bottom-nav"><div class="nav-inner"><button class="nav active" data-view="issue"><span>🔑</span>生成卡密</button><button class="nav" data-view="history"><span>🧾</span>发卡记录</button><button class="nav" data-view="settings"><span>⚙️</span>设置</button></div></nav>
+  <div id="toast" class="toast"></div>
+  <script src="/license-admin-mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>激活码发卡后台</title>
+  <style>
+    :root{font-family:"Microsoft YaHei",system-ui,sans-serif;color:#21312c;background:#edf5f2}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 8% 0,#ffeef1,transparent 33%),linear-gradient(145deg,#f8fbfa,#eaf4f0)}main{width:min(1120px,calc(100% - 40px));margin:34px auto}.head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.head h1{margin:0;font-size:28px}.head p{margin:7px 0 0;color:#697873}.safe{padding:8px 12px;border-radius:999px;color:#257d5c;background:#e3f5ed;font-size:13px}.card{padding:24px;margin-bottom:18px;border:1px solid #d8e6e1;border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 15px 44px rgba(52,91,78,.09)}label{display:block;margin-bottom:8px;font-weight:700}input,textarea,select{width:100%;border:1px solid #c9d8d3;border-radius:10px;padding:13px 14px;outline:none;background:#fff;font:14px/1.5 "Microsoft YaHei",system-ui,sans-serif}textarea{font-family:ui-monospace,Consolas,monospace}input:focus,textarea:focus,select:focus{border-color:#3ba77d;box-shadow:0 0 0 3px rgba(59,167,125,.12)}.plans{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}.plan{padding:15px 8px;border:1px solid #d5e1dd;border-radius:11px;color:#4d5d57;background:#f7faf9;cursor:pointer}.plan strong,.plan span{display:block}.plan span{margin-top:4px;color:#84908c;font-size:12px}.plan.active{color:#fff;border-color:#319b72;background:linear-gradient(135deg,#54bd91,#2b966d);box-shadow:0 8px 20px rgba(43,150,109,.2)}.plan.active span{color:#e8fff6}.actions{display:flex;align-items:center;justify-content:space-between;gap:14px}.notice{color:#7a8581;font-size:13px}.primary,.copy{border:0;border-radius:10px;padding:12px 20px;cursor:pointer;font-weight:700}.primary{min-width:180px;color:#fff;background:linear-gradient(135deg,#ff6c81,#ec3f5d)}.primary:disabled{cursor:wait;opacity:.65}.copy{color:#2c8061;background:#e6f5ef}.result{display:none}.result.show{display:block}.result-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.result h2{margin:0;font-size:20px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.meta span{padding:6px 10px;border-radius:999px;background:#eef5f2;font-size:12px}.status{min-height:22px;margin-top:12px;color:#ce4058;font-size:13px}.status.ok{color:#25805e}.history-tools{display:grid;grid-template-columns:minmax(240px,1fr) 180px auto;gap:10px;margin:16px 0}.history-tools .copy{white-space:nowrap}table{width:100%;border-collapse:collapse}th,td{padding:11px 9px;border-bottom:1px solid #edf1ef;text-align:left;font-size:13px}th{color:#77837f;font-weight:600}.state{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}.state.active{color:#237a59;background:#e4f5ed}.state.expired{color:#ad4554;background:#fdecef}.row-actions{display:flex;gap:7px}.mini{padding:7px 10px;border:0;border-radius:8px;color:#317a61;background:#e9f5f0;cursor:pointer}.mini.danger{color:#ba3d51;background:#fdebef}.empty{padding:18px;color:#8a9692;text-align:center}.mobile-access{display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px}.mobile-link-row{display:flex;gap:10px}.mobile-link-row input{font-family:ui-monospace,Consolas,monospace}.mobile-tip{margin:6px 0 0;color:#7a8581;font-size:12px}@media(max-width:860px){.plans{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){main{width:min(100% - 24px,620px);margin:18px auto 28px}.card{padding:18px;border-radius:15px}.head h1{font-size:23px}.plans{grid-template-columns:repeat(2,1fr)}.actions,.head{align-items:flex-start;flex-direction:column}.primary{width:100%}.history-tools{grid-template-columns:1fr}.history-wrap{overflow:auto}.mobile-access{grid-template-columns:1fr}.mobile-link-row{flex-direction:column}.mobile-link-row .copy{width:100%}}
+    .state.activation{color:#8a6416;background:#fff4d7}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="head"><div><h1>🔐 激活码发卡后台</h1><p>选择卡型，一键生成并复制，无需客户机器码。</p></div><span class="safe">仅本机访问 · 私钥不离开后端</span></div>
+    <section class="card mobile-access">
+      <div><label for="mobileLink">📱 手机发卡地址</label><div class="mobile-link-row"><input id="mobileLink" readonly placeholder="正在获取手机地址…" /><button id="copyMobileLink" class="copy">复制手机地址</button></div><p id="mobileTip" class="mobile-tip">手机与电脑连接同一 Wi-Fi 后即可使用；管理链接请勿公开分享。</p></div>
+      <button id="openMobile" class="primary">预览手机版</button>
+    </section>
+    <section class="card">
+      <div class="plans" id="plans">
+        <button class="plan" data-plan="day"><strong>一天卡</strong><span>1 天</span></button>
+        <button class="plan active" data-plan="week"><strong>7天卡</strong><span>7 天</span></button>
+        <button class="plan" data-plan="fortnight"><strong>14天卡</strong><span>14 天</span></button>
+        <button class="plan" data-plan="month"><strong>月卡</strong><span>30 天</span></button>
+        <button class="plan" data-plan="year"><strong>年卡</strong><span>365 天</span></button>
+        <button class="plan" data-plan="lifetime"><strong>永久卡</strong><span>永久有效</span></button>
+      </div>
+      <div class="actions"><span class="notice">限时卡从客户首次输入激活码时开始计时；不同电脑会分别计算。</span><button id="generate" class="primary">一键生成激活码</button></div>
+      <div id="status" class="status"></div>
+    </section>
+    <section id="result" class="card result">
+      <div class="result-head"><h2>激活码已生成</h2><button id="copy" class="copy">复制激活码</button></div>
+      <textarea id="code" rows="6" readonly></textarea>
+      <div id="meta" class="meta"></div>
+    </section>
+    <section class="card">
+      <div class="result-head"><div><h2>飞书激活记录</h2><p class="notice">粘贴安全中转地址，客户首次激活后会自动写入飞书多维表格。</p></div></div>
+      <label for="feishuWebhook">激活记录中转地址</label>
+      <input id="feishuWebhook" type="password" autocomplete="off" placeholder="https://..." />
+      <label for="feishuReportToken" style="margin-top:14px">上报令牌</label>
+      <input id="feishuReportToken" type="password" autocomplete="off" placeholder="部署中转服务时生成的令牌" />
+      <div class="actions" style="margin-top:14px"><span class="notice">客户端只保存中转地址和上报令牌；飞书 App Secret 留在云端。</span><div class="row-actions"><button id="testFeishu" class="copy">测试连接</button><button id="saveFeishu" class="primary">保存配置</button></div></div>
+      <div id="feishuStatus" class="status"></div>
+    </section>
+    <section class="card">
+      <div class="result-head"><h2>发卡记录</h2></div>
+      <div class="history-tools">
+        <input id="historySearch" type="search" autocomplete="off" placeholder="搜索卡型、激活码或记录编号" />
+        <select id="statusFilter"><option value="all">全部状态</option><option value="activation">激活后计时</option><option value="active">有效</option><option value="expired">已过期</option></select>
+        <button id="refresh" class="copy">刷新</button>
+      </div>
+      <div class="history-wrap"><table><thead><tr><th>卡型</th><th>状态</th><th>生成时间</th><th>到期时间</th><th></th></tr></thead><tbody id="history"></tbody></table></div>
+    </section>
+  </main>
+  <script src="/license-admin-web.js"></script>
+</body>
+</html>

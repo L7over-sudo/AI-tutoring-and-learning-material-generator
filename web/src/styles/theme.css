@@ -1,0 +1,86 @@
+:root {
+  /* 国风配色：碧青、石青、十样锦 */
+  --primary-pink: #5cb5ce;
+  --deep-pink: #2f91aa;
+  --light-pink: #eaf7f9;
+  --soft-pink: #e4f2ec;
+  --border-pink: #b9dee5;
+  --bg-main: #f4fbfa;
+  --text-main: #244b54;
+  --text-muted: #6d8584;
+  --success: #4cae7d;
+  --warning: #d99c58;
+  --error: #d96672;
+  --palette-cyan: #5cb5ce;
+  --palette-jade: #6bb392;
+  --palette-blush: #f0c2a2;
+  --el-color-primary: #5cb5ce;
+  --el-color-primary-light-3: #82c6d8;
+  --el-color-primary-light-5: #addce7;
+  --el-color-primary-light-7: #d2edf2;
+  --el-color-primary-light-8: #e2f4f6;
+  --el-color-primary-light-9: #f0fafb;
+  --el-color-primary-dark-2: #438fa5;
+}
+
+.pink-button {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-pink), var(--palette-jade));
+  box-shadow: 0 10px 24px rgba(92, 181, 206, 0.24);
+}
+
+.pink-button:hover,
+.pink-button:focus {
+  color: #fff;
+  background: linear-gradient(135deg, #72c3d7, #7fc0a2);
+}
+
+.pink-outline {
+  color: var(--deep-pink);
+  border-color: var(--border-pink);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.pink-outline:hover,
+.pink-outline:focus {
+  color: var(--deep-pink);
+  border-color: var(--primary-pink);
+  background: var(--light-pink);
+}
+
+.soft-button {
+  color: var(--text-main);
+  border-color: #cce7e2;
+  background: #f3fbf8;
+}
+
+.status-tag.is-pending {
+  color: #777;
+  border-color: #ddd;
+  background: #f8f8f8;
+}
+
+.status-tag.is-running {
+  color: #c86b00;
+  border-color: #ffdca8;
+  background: #fff5e5;
+}
+
+.status-tag.is-success {
+  color: #15803d;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.status-tag.is-error {
+  color: #d32f4c;
+  border-color: #ffc4d0;
+  background: #fff0f3;
+}
+
+.status-tag.is-muted {
+  color: #777;
+  border-color: #e5e5e5;
+  background: #f6f6f6;
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "ai-teaching-activation-relay",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-04",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "FEISHU_APP_TOKEN": "UNdNbFUwXajxchseRZDckYFXn9b",
+    "FEISHU_TABLE_ID": "tbl2yibAqbfvFTeV"
+  }
+}

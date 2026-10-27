@@ -1,0 +1,118 @@
+{
+  "name": "ai-teaching-image-web",
+  "version": "1.0.12",
+  "private": true,
+  "description": "Desktop packaged AI teaching image tool.",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix web install",
+    "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix web run dev\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:web": "npm --prefix web run dev",
+    "start": "npm --prefix server start",
+    "clean:artifacts": "node scripts/cleanup-project-artifacts.mjs",
+    "build": "npm --prefix web run build",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --win nsis",
+    "postdist": "node scripts/cleanup-old-installers.mjs",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip",
+    "license:init": "node scripts/license-admin.cjs init",
+    "license:generate": "node scripts/license-admin.cjs generate",
+    "license:admin": "node scripts/license-admin-web.cjs",
+    "test:license": "node scripts/test-license.cjs && node scripts/test-license-report.cjs && node scripts/test-feishu-worker.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.3",
+    "archiver": "^7.0.1",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "form-data": "^4.0.1",
+    "https-proxy-agent": "^7.0.6",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.8.0",
+    "multer": "^2.0.2",
+    "nanoid": "^5.0.9",
+    "p-limit": "^6.2.0",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.4.624",
+    "sharp": "^0.33.5",
+    "socks-proxy-agent": "^8.0.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "rcedit": "^5.0.2"
+  },
+  "build": {
+    "appId": "com.local.ai-teaching-image",
+    "productName": "AI自动作图工具",
+    "afterPack": "scripts/apply-windows-icon.cjs",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "build/**/*",
+      "electron/**/*",
+      "server/src/**/*",
+      "server/package.json",
+      "web/dist/**/*",
+      "package.json",
+      "!server/src/uploads/**/*"
+    ],
+    "asarUnpack": [
+      "node_modules/@napi-rs/**/*",
+      "node_modules/sharp/**/*",
+      "node_modules/@img/**/*"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false,
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "AI-Teaching-Image-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "forceCodeSigning": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.inherit.plist",
+      "notarize": false,
+      "category": "public.app-category.graphics-design",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "artifactName": "AI-Teaching-Image-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "artifactName": "AI-Teaching-Image-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
